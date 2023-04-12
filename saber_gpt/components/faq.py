@@ -6,23 +6,13 @@ def faq():
     st.markdown(
         """
 # FAQ
-## How does KnowledgeGPT work?
+## How does SaberGPT work?
 When you upload a document, it will be divided into smaller chunks 
 and stored in a special type of database called a vector index 
-that allows for semantic search and retrieval.
+that allows for semantic search and retrieval. In order to save this, 
+you must provide an API key as well as a local directory where this database 
+can be saved. 
 
-When you ask a question, KnowledgeGPT will search through the
-document chunks and find the most relevant ones using the vector index.
-Then, it will use GPT3 to generate a final answer.
-
-## Is my data safe?
-Yes, your data is safe. KnowledgeGPT does not store your documents or
-questions. All uploaded data is deleted after you close the browser tab.
-
-## Why does it take so long to index my document?
-If you are using a free OpenAI API key, it will take a while to index
-your document. This is because the free API key has strict [rate limits](https://platform.openai.com/docs/guides/rate-limits/overview).
-To speed up the indexing process, you can use a paid API key.
 
 ## What do the numbers mean under each source?
 For a PDF document, you will see a citation number like this: 3-12. 

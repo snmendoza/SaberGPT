@@ -1,6 +1,7 @@
 import streamlit as st
-from knowledge_gpt.components import config
-from knowledge_gpt.components.faq import faq
+from saber_gpt.components import config
+from saber_gpt.components.faq import faq
+from saber_gpt.components import UIelements
 
 
 def set_openai_api_key(api_key: str):
@@ -30,6 +31,7 @@ def sidebar():
             "This tool is a work in progress. "
         )
         st.markdown("Originally Made by [mmz_001](https://twitter.com/mm_sasmitha)")
+        st.markdown("Forked by [snmendoza] (https://github.com/snmendoza)")
         st.markdown("---")
 
         faq()

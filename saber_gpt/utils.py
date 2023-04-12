@@ -13,8 +13,8 @@ from langchain.vectorstores.faiss import FAISS
 from openai.error import AuthenticationError
 from pypdf import PdfReader
 
-from knowledge_gpt.embeddings import OpenAIEmbeddings
-from knowledge_gpt.prompts import STUFF_PROMPT
+from saber_gpt.embeddings import OpenAIEmbeddings
+from saber_gpt.prompts import PreambleToPrompt
 
 
 @st.experimental_memo()
@@ -114,7 +114,7 @@ def search_docs(index: VectorStore, query: str) -> List[Document]:
 
 
 @st.cache(allow_output_mutation=True)
-def get_answer(docs: List[Document], query: str) -> Dict[str, Any]:
+def get_answer(preamble, docs: List[Document], query: str) -> Dict[str, Any]:
     """Gets an answer to a question from a list of Documents."""
 
     # Get the answer
@@ -124,7 +124,7 @@ def get_answer(docs: List[Document], query: str) -> Dict[str, Any]:
             temperature=0, openai_api_key=st.session_state.get("OPENAI_API_KEY")
         ),  # type: ignore
         chain_type="stuff",
-        prompt=STUFF_PROMPT,
+        prompt=PreambleToPrompt(preamble),
     )
 
     # Cohere doesn't work very well as of now.
